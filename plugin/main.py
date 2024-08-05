@@ -21,6 +21,7 @@ class ChatGPT(Flox):
     def __init__(self):
         self.api_key = self.settings.get("api_key")
         self.model = self.settings.get("model")
+        self.base_url = self.settings.get("base_url")
         self.prompt_stop = self.settings.get("prompt_stop")
         self.default_system_prompt = self.settings.get("default_prompt")
         self.save_conversation_setting = self.settings.get("save_conversation")
@@ -97,7 +98,10 @@ class ChatGPT(Flox):
         """
         Query the OpenAI end-point
         """
-        url = "https://api.openai.com/v1/chat/completions"
+        if self.base_url:
+            url = self.base_url
+        else:
+            url = "https://api.openai.com/v1/chat/completions"
 
         headers = {
             "Authorization": "Bearer " + self.api_key,

@@ -5,6 +5,12 @@ body:
       label: "API Key:"
       defaultValue: ""
       description: OpenAI API Key
+  - type: input
+    attributes:
+      name: base_url
+      label: "Base URL:"
+      defaultValue: ""
+      description: Alternative OpenAI API Base URL
   - type: dropdown
     attributes:
       name: model
